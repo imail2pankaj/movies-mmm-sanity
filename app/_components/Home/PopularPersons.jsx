@@ -18,7 +18,7 @@ const PopularPersons = ({ persons }) => {
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
-          {/* {persons.map((person) => <PersonCard key={person.id} person={person} />)} */}
+          {persons.map((person) => <PersonCard key={person._id} person={person} />)}
         </div>
       </div>
     </section>

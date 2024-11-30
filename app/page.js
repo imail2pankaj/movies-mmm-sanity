@@ -34,8 +34,7 @@ const PopularPersons = dynamic(() => import('./_components/Home/PopularPersons')
 export default async function Home() {
 
   const persons = await client.fetch(HOME_POPULAR_PERSONS);
-  // console.log(persons)
-persons.map(per => console.log(per.personTypes))
+
   return (
     <>
       <Browse />
