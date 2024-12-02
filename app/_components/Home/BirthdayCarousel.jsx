@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
-import { calculateAge, getImageURL } from "@/lib/functions"
+import { calculateAge } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -13,9 +13,9 @@ const BirthdayCarousel = ({ bdays }) => {
             <div className="col-span-3 sm:col-span-1">
               <Card className="">
                 <CardContent className="flex flex-col items-center justify-center px-0">
-                  <Link href={`/peoples/${_.slug}`} prefetch={false}>
+                  <Link href={`/peoples/${_.slug.current}`} prefetch={false}>
                     <Image
-                      src={getImageURL("persons", _.image)}
+                      src={urlFor(_.image.asset._ref).width(500).url()}
                       width={300}
                       height={200}
                       alt={_.full_name}
@@ -25,7 +25,7 @@ const BirthdayCarousel = ({ bdays }) => {
                     />
                   </Link>
                   <div className="mt-4 text-center">
-                    <Link href={`/peoples/${_.slug}`} prefetch={false}>
+                    <Link href={`/peoples/${_.slug.current}`} prefetch={false}>
                       <h3 className="text-md font-bold text-gray-900 dark:text-gray-50">
                         {_.full_name}
                       </h3>

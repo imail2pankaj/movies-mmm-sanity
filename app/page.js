@@ -1,3 +1,4 @@
+import { getPopularPersons } from "@/actions/common.action";
 import { HOME_POPULAR_PERSONS } from "@/lib/queries";
 import { client } from "@/sanity/lib/client";
 import dynamic from "next/dynamic";
@@ -26,21 +27,33 @@ const PopularPersons = dynamic(() => import('./_components/Home/PopularPersons')
   ssr: false
 })
 
-// const UpcomingMovies = dynamic(() => import('./_components/Home/UpcomingMovies'), {
-//   loading: () => <p></p>,
-//   ssr: false
-// })
+const UpcomingMovies = dynamic(() => import('./_components/Home/UpcomingMovies'), {
+  loading: () => <p></p>,
+  ssr: false
+})
+
+const PopularMovies = dynamic(() => import('./_components/Home/PopularMovies'), {
+  loading: () => <p></p>,
+  ssr: false
+})
+
+const Birthdays = dynamic(() => import('./_components/Home/Birthdays'), {
+  loading: () => <p></p>,
+  ssr: false
+})
 
 export default async function Home() {
 
-  const persons = await client.fetch(HOME_POPULAR_PERSONS);
+  const persons = await getPopularPersons(['Actor','Actress']);
 
   return (
     <>
       <Browse />
       <SearchSection />
-      {/* <UpcomingMovies /> */}
+      <UpcomingMovies />
       <PopularPersons persons={persons.length ? persons : []} />
+      <PopularMovies />
+      <Birthdays />
     </>
   );
 }

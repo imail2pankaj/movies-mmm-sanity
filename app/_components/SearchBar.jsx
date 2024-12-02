@@ -1,5 +1,5 @@
 "use client"
-// import { getNavbarSearch } from '@/actions/common.action';
+import { getNavbarSearch } from '@/actions/common.action';
 import { Input } from '@/components/ui/input'
 import { SearchIcon } from 'lucide-react'
 import Image from 'next/image';
@@ -18,9 +18,10 @@ const SearchBar = () => {
   useEffect(() => {
     const handleSearch = (term) => {
       if (term.length > 2) {
-        // getNavbarSearch(term).then(response => {
-        //   setRecords(response);
-        // })
+        getNavbarSearch(term).then(response => {
+          console.log(response)
+          setRecords(response);
+        })
       } else {
         setRecords([]);
       }

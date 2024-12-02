@@ -20,16 +20,19 @@
     "@sanity/vision": "^3.65.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cmdk": "^1.0.0",
     "embla-carousel-react": "^8.5.1",
     "lucide-react": "^0.462.0",
     "next": "14.2.18",
     "next-sanity": "^9.8.3-canary.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-intersection-observer": "^9.13.1",
     "sanity": "^3.65.1",
     "styled-components": "^6.1.13",
     "tailwind-merge": "^2.5.5",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "use-debounce": "^10.0.4"
   },
   "devDependencies": {
     "eslint": "^8",

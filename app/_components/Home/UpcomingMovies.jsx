@@ -17,7 +17,7 @@ const UpcomingMovies = () => {
   useEffect(() => {
 
     const loadingUpcomingMovies = async () => {
-      const data = await getUpcomingMovies(new Date());
+      const data = await getUpcomingMovies((new Date()).toISOString());
       setMovies(data);
       setLoading(false)
     }

@@ -1,6 +1,6 @@
 "use client"
 
-import { fetchPersonsBirthdayToday } from "@/actions/person.action";
+import { fetchPersonsBirthdayToday } from "@/actions/common.action";
 import { Button } from "@/components/ui/button";
 import dynamic from "next/dynamic";
 import Link from "next/link";
