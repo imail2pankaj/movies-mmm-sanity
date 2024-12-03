@@ -1,13 +1,13 @@
 import { BASE_URL } from '@/lib/constants'
-import { getImageURL } from '@/lib/functions'
+// import { getImageURL } from '@/lib/functions'
 
 const PersonJSONLD = ({record}) => {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: record.full_name,
-    url: `${BASE_URL}peoples/${record.slug}`,
-    image: getImageURL("persons", record.image),
+    name: record.fullName,
+    // url: `${BASE_URL}peoples/${record.slug}`,
+    // image: getImageURL("persons", record.image),
     description: record.bio,
     alternateName: record.nick_names,
     birthDate: record.born,

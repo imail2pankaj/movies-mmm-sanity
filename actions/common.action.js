@@ -27,6 +27,68 @@ export const getPopularPersons = async (personTypes) => {
   }
 }
 
+export async function getPersonBySlug(slug) {
+  try {
+
+    const personsQuery = `
+      *[_type =="persons" && status == "Publish" && slug['current'] == $slugs][0] {
+        _id,
+        fullName,
+        slug,
+        image,
+        bio,
+        description,
+        gender,
+        bron,
+        birthName,
+        birthPlace,
+        height,
+        died,
+        personTypes[] -> {
+          _id, title
+        }
+      } 
+    `;
+
+    const params = { slugs:slug };
+    const person = await client.fetch(personsQuery, params)
+
+    return {
+      ...person,
+      person_type_id: person?.personTypes?.map(ptype => ({
+        label: ptype.title,
+        value: ptype._id,
+      }))
+    }
+  } catch (error) {
+    console.log(error)
+    return error
+  }
+
+  const person = await prisma.persons.findFirst({
+    where: { slug, status: "Publish" },
+    include: {
+      person_types_in_persons: {
+        include: {
+          person_types: {
+            include: {}
+          }
+        }
+      },
+      person_links: true,
+    },
+  })
+
+  return {
+    ...person,
+    person_types_in_persons: [],
+    person_type_id: person?.person_types_in_persons?.map(ptype => ({
+      label: ptype.person_types.title,
+      value: Number(ptype.person_types.id),
+    }))
+  };
+}
+
 export async function getUpcomingMovies(date) {
 
   const query = `
@@ -94,14 +156,14 @@ export async function getNavbarSearch(data) {
     ...persons.map(p => (
       {
         name: p.fullName,
-        slug: `/peoples/${p.slug}`,
+        slug: `/peoples/${p.slug.current}`,
         image: urlFor(p.image.asset._ref).width(500).url()
       }
     )),
     ...titles.map(p => (
       {
         name: p.title,
-        slug: `/movies/${p.slug}`,
+        slug: `/movies/${p.slug.current}`,
         image: urlFor(p.image.asset._ref).width(500).url()
       }
     ))

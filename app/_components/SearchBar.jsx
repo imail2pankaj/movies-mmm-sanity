@@ -19,7 +19,6 @@ const SearchBar = () => {
     const handleSearch = (term) => {
       if (term.length > 2) {
         getNavbarSearch(term).then(response => {
-          console.log(response)
           setRecords(response);
         })
       } else {

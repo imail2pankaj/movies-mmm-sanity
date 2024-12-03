@@ -68,12 +68,16 @@ export async function fetchFilteredPersons({
       fullName,
       slug,
       born,
+      bio,
       died,
       image,
-      personTypes
+      personLinks,
+      personTypes[] -> {
+        _id, title
+      }
     }
   `;
-console.log(qry)
+
   // Fetch data using the GROQ query
   const persons = await client.fetch(qry);
 

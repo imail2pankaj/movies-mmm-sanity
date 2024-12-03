@@ -1,5 +1,5 @@
 import { BASE_URL } from '@/lib/constants'
-import { getImageURL } from '@/lib/functions'
+// import { getImageURL } from '@/lib/functions'
 
 const MovieJSONLD = ({ record }) => {
   const jsonLd = {
@@ -7,8 +7,8 @@ const MovieJSONLD = ({ record }) => {
     '@type': 'Movie',
     name: record.title,
     url: `${BASE_URL}titles/${record.slug}`,
-    image: getImageURL("titles", record.image),
-    thumbnailUrl: getImageURL("titles", record.image),
+    // image: getImageURL("titles", record.image),
+    // thumbnailUrl: getImageURL("titles", record.image),
     description: record.description,
     dateCreated: record.created_at,
     datePublished: record.created_at,

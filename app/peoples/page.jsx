@@ -33,7 +33,7 @@ const Peoples = async ({ searchParams }) => {
 
   const types = await getPersonTypes({});
 
-  // persons.map(p => console.log(p))
+  persons.map(p => console.log(p))
 
   return (
     <>
