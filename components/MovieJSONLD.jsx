@@ -12,13 +12,13 @@ const MovieJSONLD = ({ record }) => {
     description: record.description,
     dateCreated: record.created_at,
     datePublished: record.created_at,
-    keywords: (record.genre_id.map(x => `${record.title} Best ${x.label} Movie`)).join(", "),
-    genre: (record.genre_id.map(x => `${x.label}`)).join(", "),
+    keywords: (record.genres.map(x => `${record} Best ${x} Movie`)).join(", "),
+    genre: (record.genres.map(x => `${x}`)).join(", "),
     director: {
       "@type": "Person",
-      name: (record.director_id.map(x => x.label)).join()
+      name: (record?.director_id?.map(x => x.label))?.join()
     },
-    actor: record.casts.map(x => ({
+    actor: record?.casts?.map(x => ({
       "@type": "Person",
       "name": x.label
     }))
