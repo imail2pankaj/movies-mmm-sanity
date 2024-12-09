@@ -109,6 +109,9 @@ export async function getRecordBySlug(slug) {
       slug,
       image,
       genres,
+      year,
+      runTime,
+      releaseDate,
       personsInPersonTypeInTitles[] {
         persons-> {
           _id,

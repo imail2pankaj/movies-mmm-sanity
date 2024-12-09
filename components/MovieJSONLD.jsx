@@ -1,5 +1,5 @@
 import { BASE_URL } from '@/lib/constants'
-// import { getImageURL } from '@/lib/functions'
+import { urlFor } from '@/lib/image-builder'
 
 const MovieJSONLD = ({ record }) => {
   const jsonLd = {
@@ -7,11 +7,12 @@ const MovieJSONLD = ({ record }) => {
     '@type': 'Movie',
     name: record.title,
     url: `${BASE_URL}titles/${record.slug}`,
-    // image: getImageURL("titles", record.image),
-    // thumbnailUrl: getImageURL("titles", record.image),
+    image: urlFor(record.image.asset._ref).width(500).url(),
+    thumbnailUrl: urlFor
+    (record.image.asset._ref).width(500).url(),
     description: record.description,
-    dateCreated: record.created_at,
-    datePublished: record.created_at,
+    dateCreated: record.createdAt,
+    datePublished: record.createdAt,
     keywords: (record.genres.map(x => `${record} Best ${x} Movie`)).join(", "),
     genre: (record.genres.map(x => `${x}`)).join(", "),
     director: {

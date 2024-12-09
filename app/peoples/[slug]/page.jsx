@@ -46,7 +46,7 @@ export async function generateMetadata({ params }, parent) {
 const PersonalDetail = async ({ params: { slug } }) => {
 
   const person = await getPersonBySlug(slug);
-
+console.log(person)
   return (
     <>
       <PersonJSONLD record={person} />
