@@ -33,6 +33,9 @@ const Footer = () => {
           About
         </Link> */}
         </nav>
+        <div className="mt-8 flex items-center justify-center text-sm text-muted-foreground">
+        <p className="w-full text-center">Design & Developed by <Link href="https://scenicitsolutions.com" target="_blank">Scenic IT Solutions</Link></p>
+        </div>
       </div>
     </div>
   )
